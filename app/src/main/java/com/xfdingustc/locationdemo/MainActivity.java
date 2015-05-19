@@ -6,6 +6,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.xfdingustc.location.Address;
 import com.xfdingustc.location.LatLng;
 
 import java.awt.font.TextAttribute;
@@ -14,6 +15,7 @@ import java.awt.font.TextAttribute;
 public class MainActivity extends ActionBarActivity {
   private LatLng mLatLng;
   private TextView mLocation;
+  private TextView mAddress;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +24,16 @@ public class MainActivity extends ActionBarActivity {
     mLatLng = new LatLng(255.200, 322.200);
     mLocation = (TextView)findViewById(R.id.tv_lat_lng);
     mLocation.setText(mLatLng.toString());
+    mAddress = (TextView)findViewById(R.id.tv_address);
+    Address address =  new Address.AddressBuilder()
+        .withProvince("Shanghai")
+        .withCity("Shanghai")
+        .withDistrict("Pudong")
+        .withStreet("Zhangheng Road")
+        .withStreetNumber("1000").build();
+
+    mAddress.setText(address.toString());
+
   }
 
   @Override
